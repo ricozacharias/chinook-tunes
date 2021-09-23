@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header.html :: head">
+</head>
+<body>
+<div class="container">
+    <div class="mb-3" th:insert="fragments/header.html :: header"></div>
+
+    <div class="card mb-2">
+        <div class="card-header">
+            Songs
+        </div>
+        <div class="card-body">
+            <div th:each="track: ${tracks}" th:text="${track.getTrackName()}"></div>
+        </div>
+    </div>
+
+    <div class="card mb-2">
+        <div class="card-header">
+            Genres
+        </div>
+        <div class="card-body">
+            <div th:each="genre: ${genres}" th:text="${genre.getName()}"></div>
+        </div>
+    </div>
+
+    <div class="card mb-2">
+        <div class="card-header">
+            Artists
+        </div>
+        <div class="card-body">
+            <div th:each="artist: ${artists}" th:text="${artist.getName()}"></div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

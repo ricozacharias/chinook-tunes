@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header.html :: head">
+</head>
+<body>
+<div class="container">
+    <div class="mb-3" th:insert="fragments/header.html :: header"></div>
+
+    <div th:if="${searchtext != ''}">
+
+        <div th:if="${tracks.size() > 0}">
+
+            <h2>Search results for "<span th:text="${searchtext}"></span>":</h2>
+
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Track</th>
+                            <th>Album</th>
+                            <th>Artist</th>
+                            <th>Genre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="track: ${tracks}">
+                            <td th:text="${track.getTrackName()}"></td>
+                            <td th:text="${track.getAlbumTitle()}"></td>
+                            <td th:text="${track.getArtistName()}"></td>
+                            <td th:text="${track.getGenreName()}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div th:if="${tracks.size() == 0}">
+            <h2>Nothing found for "<span th:text="${searchtext}"></span>".</h2>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
